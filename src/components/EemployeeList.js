@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 
 
 function EemployeeList(props) {
+  
   let history = useHistory();
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -16,7 +17,7 @@ function EemployeeList(props) {
         .then(res => {
           setData(res.data);
           console.log(res.data)
-          setLoading(false)
+          // setLoading(
           console.log(res.data)
         })
     };
@@ -34,6 +35,7 @@ function EemployeeList(props) {
   // }, []);
 
   const deleteemployee = (id) => {
+    window.location.reload(false);
     debugger;
     axios.delete(`https://app-name-employee-test.herokuapp.com/api/v10/employee/${id}/deleteEmployee`)
       .then((result) => {
@@ -41,9 +43,9 @@ function EemployeeList(props) {
       })
       .catch(e => {console.log(e)})
   };
-  const editemployee = (Id) => {
+  const editemployee = (id) => {
     props.history.push({
-      pathname: '/edit/' + Id
+      pathname: '/edit/' + id
     });
   };
   return (

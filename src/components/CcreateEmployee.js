@@ -2,10 +2,18 @@ import React, { useState } from 'react';
 import { Button, Card, CardBody, CardFooter, Col, Container, Form, Input, InputGroup, InputGroupAddon, InputGroupText, Row } from 'reactstrap';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
-
+import { Formik } from "formik";
+import * as Yup from "yup"
 function CcreateEmployee(props) {
-    // <Formik initial values ={{employeeFirstName: "", employeeLastName:"", employeeAddress:"",employeeDateOfBirthday:"",employeeDegree:"",
-    //                             employeeEmail:"", employeeJoinDate:" ",eemployeeNumber: "",employeeNumber:"", employeePhoto:""}}>
+
+    // <Formik initial values ={{employeeFirstName: "",
+    //                          employeeLastName:"", 
+    //                          employeeAddress:"",
+    //                          employeeDateOfBirthday:"",
+    //                          employeeDegree:"",
+    //                         employeeEmail:"", 
+    //                         employeeJoinDate:" ",
+    //                         employeeNumber: "",employeeNumber:"", employeePhoto:""}}>
     
     const [employee, setEmployee] = useState({ employeeFirstName: '',
                                                  employeeAddress: '',
@@ -17,9 +25,7 @@ function CcreateEmployee(props) {
                                                     employeeEmail: ' ',
                                                     employeeDegree: ' ',
                                                     employeeJoinDate: ' ',
-                                                    role:' ',
-                                                    
-
+                                                    role: ' '
                                                 });
     const [showLoading, setShowLoading] = useState(false);
     const apiUrl = "https://app-name-employee-test.herokuapp.com/api/v10/employee/createEmployee";
@@ -105,7 +111,8 @@ function CcreateEmployee(props) {
                                             name="Select Designtion" 
                                             onChange={onChange}
                                             id="role"
-                                            value={employee.role}>
+                                            // value={employee.role}
+                                            >
                                             
                                         <option selected>Select Designation</option>
                                         <option value="1">Employee</option>
